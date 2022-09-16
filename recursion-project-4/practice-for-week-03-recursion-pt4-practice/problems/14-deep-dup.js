@@ -19,11 +19,7 @@ when compared to various indexes of the original array, should evaluate to false
 
 Examples:
 
-let arr = [[1], [2, [3]]];
-duped = deepDup(arr); // [[1], [2, [3]]]
-arr[0] === duped[0] // false
-arr[1] === duped[1] // false
-arr[1][1] === duped[1][1] // false
+
 
 Note:
 if you compare a 1 dimensional array of numbers like below,
@@ -35,10 +31,20 @@ console.log(x[0] === y[0]) // true
 
 
 function deepDup(arr) {
-  // Your code here
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++){
+    let res = arr.shift()
+    newArr.push(res)
+    deepDup(arr)
+  }
+  return newArr
 }
 
-
+let arr = [[1], [2, [3]]];
+console.log(duped = deepDup(arr)); // [[1], [2, [3]]]
+arr[0] === duped[0] // false
+console.log(arr[1] === duped[1]) // false
+arr[1][1] === duped[1][1] // false
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = deepDup;

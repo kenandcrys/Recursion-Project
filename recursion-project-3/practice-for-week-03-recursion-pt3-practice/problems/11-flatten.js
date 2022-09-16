@@ -10,20 +10,23 @@ flatten([1, 2]); // [1, 2]
 flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
-function flatten(arr) {
-  let flattenedArr = [];
-  if (arr.length === 0) {
-    return flattenedArr;
-  }
 
-  arr.reduce((flatArr, item) => {
-    let inner =
-      item.push(flatArr)
+  let flatten = function (array) {
+    let flat = []
+  
+    array.forEach(element => {
+      if (Array.isArray(element)) {
+        flat.push(...flatten(element)) // recursive
+      } else {
+        flat.push(element)
+      }
+    });
+    return flat
+  
+  } 
 
-  })
-  return arr.reduce((flattened, item) =>
-    flattened.concat(Array.isArray(item) ? flatten(item) : [item]), []);
-}
+
+
 
 console.log(flatten([])); // []
 console.log(flatten([1, 2])); // [1, 2]

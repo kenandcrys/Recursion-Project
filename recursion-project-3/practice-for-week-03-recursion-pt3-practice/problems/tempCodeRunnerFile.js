@@ -1,1 +1,0 @@
-num * factorial(num - 1)

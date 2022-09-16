@@ -20,12 +20,12 @@ fibonacci(10); // 55
 ***********************************************************************/
 
 function fibonacci(n) {
-  if (n <= 0) {
+  if (n <= 1) { // base case needs to be less than or equal to 1 bc line 10 says to start at 1.
     return n;
-  } 
+  }
+  return fibonacci(n - 2) + fibonacci(n - 1);
 
-  // return fibonacci(n - 1);
-}
+} 
 
 console.log(fibonacci(1)); // 1
 console.log(fibonacci(2)); // 1
